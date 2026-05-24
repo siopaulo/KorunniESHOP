@@ -43,6 +43,21 @@ export async function getPublishedBlogPosts(limit?: number) {
   return data ?? [];
 }
 
+export async function getPublishedBlogPostBySlug(slug: string) {
+  if (!isSupabaseConfigured()) return null;
+
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select("*")
+    .eq("slug", slug)
+    .eq("status", "published")
+    .single();
+
+  if (error) return null;
+  return data;
+}
+
 export async function getLegalPageBySlug(slug: string) {
   if (!isSupabaseConfigured()) return null;
 

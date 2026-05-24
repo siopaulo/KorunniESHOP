@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 
-import { getAdminOrder } from "@/lib/data/admin";
+import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { OrderStatusForm } from "@/components/admin/OrderStatusForm";
+import { getAdminOrder } from "@/lib/data/admin";
+import { orderStatusLabel } from "@/lib/order-status-labels";
 import { formatPrice } from "@/lib/utils";
 import type { OrderStatus } from "@/types/database";
 
@@ -23,13 +25,15 @@ export default async function AdminOrderDetailPage({ params }: OrderDetailPagePr
   } | null;
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="font-display text-2xl font-semibold">Objednávka {order.order_number}</h1>
-        <p className="text-sm text-muted-foreground">
-          Vytvořeno {new Date(order.created_at).toLocaleString("cs-CZ")}
-        </p>
-      </div>
+    <>
+      <AdminPageHeader
+        title={`Objednávka ${order.order_number}`}
+        description={`Vytvořeno ${new Date(order.created_at).toLocaleString("cs-CZ")} · ${orderStatusLabel(order.status)}`}
+        breadcrumbs={[
+          { label: "Objednávky", href: "/admin/objednavky" },
+          { label: order.order_number },
+        ]}
+      />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="rounded-2xl border border-border bg-card p-6">
@@ -57,11 +61,11 @@ export default async function AdminOrderDetailPage({ params }: OrderDetailPagePr
         </div>
       </div>
 
-      <div className="rounded-2xl border border-border bg-card p-6">
+      <div className="mt-6 rounded-2xl border border-border bg-card p-6">
         <h2 className="font-semibold">Položky</h2>
         <ul className="mt-4 space-y-2 text-sm">
           {items.map((item) => (
-            <li key={item.id} className="flex justify-between">
+            <li key={item.id} className="flex justify-between gap-4">
               <span>
                 {item.product_name} × {item.quantity}
               </span>
@@ -74,11 +78,13 @@ export default async function AdminOrderDetailPage({ params }: OrderDetailPagePr
         </div>
       </div>
 
-      <OrderStatusForm
-        orderId={order.id}
-        currentStatus={order.status as OrderStatus}
-        adminNote={order.admin_note}
-      />
-    </div>
+      <div className="mt-6">
+        <OrderStatusForm
+          orderId={order.id}
+          currentStatus={order.status as OrderStatus}
+          adminNote={order.admin_note}
+        />
+      </div>
+    </>
   );
 }

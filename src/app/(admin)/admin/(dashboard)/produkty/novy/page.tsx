@@ -1,16 +1,21 @@
-import { getAdminCategories } from "@/lib/data/admin";
+import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { ProductForm } from "@/components/admin/ProductForm";
+import { getAdminCategories } from "@/lib/data/admin";
 
 export default async function NewProductPage() {
   const categories = await getAdminCategories();
 
   return (
-    <div className="space-y-6">
-      <h1 className="font-display text-2xl font-semibold">Nový produkt</h1>
-      <p className="text-sm text-muted-foreground">
-        Po vytvoření produktu můžete na stránce úprav nahrát fotografie.
-      </p>
+    <>
+      <AdminPageHeader
+        title="Nový produkt"
+        description="Po vytvoření produktu můžete na stránce úprav nahrát fotografie."
+        breadcrumbs={[
+          { label: "Produkty", href: "/admin/produkty" },
+          { label: "Nový produkt" },
+        ]}
+      />
       <ProductForm categories={categories} />
-    </div>
+    </>
   );
 }

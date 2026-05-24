@@ -6,27 +6,24 @@ Moderní e-shop pro prodej domácích bylinných produktů z Korunní.
 
 - **Next.js 15** (App Router, TypeScript strict)
 - **Tailwind CSS 4** + **shadcn/ui**
-- **Framer Motion** — animace
-- **Supabase** — databáze, auth, storage (fáze 2)
-- **Stripe** — platby (fáze 4)
-- **Cloudinary** — produktové fotografie (fáze 4)
-- **Resend** — e-maily (fáze 4)
-- **Sentry** — monitoring (fáze 2)
+- **Supabase** — PostgreSQL, Auth, RLS
+- **Stripe** — platby
+- **Cloudinary** — produktové fotografie
+- **Resend** — transakční e-maily
+- **Sentry** — error monitoring
 
-## Rychlý start
+## Rychlý start (~15 min)
 
 ```bash
-# Instalace závislostí
 npm install
-
-# Zkopírovat env proměnné
 cp .env.example .env.local
-
-# Spustit dev server
+# Doplňte Supabase klíče — viz docs/SUPABASE.md
 npm run dev
 ```
 
-Otevřete [http://localhost:3000](http://localhost:3000).
+Dev server: [http://localhost:3000](http://localhost:3000) (nebo `--port 3001` pokud je 3000 obsazený).
+
+Supabase: spusťte migraci + `supabase/seed.sql`, vytvořte admin uživatele v Auth dashboardu.
 
 ## Skripty
 
@@ -34,47 +31,48 @@ Otevřete [http://localhost:3000](http://localhost:3000).
 |--------|-------|
 | `npm run dev` | Vývojový server (Turbopack) |
 | `npm run build` | Produkční build |
-| `npm run start` | Spuštění produkčního serveru |
-| `npm run lint` | ESLint kontrola |
-| `npm run typecheck` | TypeScript kontrola |
-| `npm run format` | Prettier formátování |
+| `npm run start` | Produkční server lokálně |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript |
+| `npm run test` | Unit testy (Vitest) |
+| `npm run test:e2e` | E2E smoke (Playwright) |
+| `npm run test:ci` | typecheck + lint + test + build |
+| `npm run audit:deps` | npm audit |
 
-## Struktura projektu
+## Struktura
 
 ```
-src/
-├── app/
-│   ├── (public)/     # Veřejné stránky e-shopu
-│   ├── (admin)/      # Administrační část
-│   └── api/          # API routes (webhooks — fáze 4)
-├── components/       # UI komponenty
-├── config/           # Konfigurace webu
-├── lib/              # Utility, integrace
-└── types/            # TypeScript typy
+src/app/(public)/   # E-shop
+src/app/(admin)/    # Administrace
+src/lib/            # Data, actions, validace
+tests/unit/         # Vitest
+e2e/                # Playwright
+docs/               # Dokumentace
 ```
 
-## Plán implementace
+## Fáze projektu
 
-Projekt je rozdělen do 5 fází — viz kořenové soubory `01-*.md` až `05-*.md`.
-
-| Fáze | Stav | Popis |
-|------|------|-------|
-| 1 | ✅ | Architektura, design systém, routing |
-| 2 | ✅ | Supabase, DB, auth, security |
-| 3 | ⏳ | Veřejný frontend, UX/UI, SEO |
-| 4 | ⏳ | Admin, platby, e-maily, fakturace |
-| 5 | ⏳ | Testy, optimalizace, deploy |
+| Fáze | Stav |
+|------|------|
+| 1–4 | ✅ Architektura, DB, commerce, admin |
+| 6 | ✅ Refactor admin UX (EsterkyGalerie inspirace) |
+| 5 | ✅ Testy, legal, deploy příprava |
 
 ## Dokumentace
 
 - [Architektura](docs/ARCHITECTURE.md)
-- [Supabase setup](docs/SUPABASE.md)
-- [Deployment](docs/DEPLOYMENT.md) (fáze 5)
+- [Supabase](docs/SUPABASE.md)
+- [Stripe](docs/STRIPE.md)
+- [Deployment](docs/DEPLOYMENT.md)
+- [Admin průvodce](docs/ADMIN-GUIDE.md)
+- [Legal checklist](docs/LEGAL-CHECKLIST.md)
+- [Audit fáze 5](docs/AUDIT-FAZE-5.md)
+- [Audit fáze 6](docs/AUDIT-FAZE-6.md)
 
 ## Právní upozornění
 
-Právní texty (OP, GDPR, cookies, reklamační řád) jsou **šablony**. Finální znění musí schválit právník a účetní před produkčním spuštěním.
+Právní texty jsou **šablony** editovatelné v adminu. Finální znění musí schválit právník před go-live.
 
 ## Licence
 
-Soukromý projekt — všechna práva vyhrazena.
+Soukromý projekt.

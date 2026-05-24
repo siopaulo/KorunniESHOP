@@ -16,7 +16,8 @@ Monolitická Next.js aplikace s Supabase backendem a externími službami pro pl
 
 - **Server Actions** — mutace (CRUD, objednávky)
 - **API Routes** — webhooky (Stripe), externí callbacky
-- **Middleware** — auth, security headers, rate limiting
+- **Middleware** — ochrana `/admin/*`, Supabase session, role-based redirect
+- **Rate limiting** — login, checkout, kontakt, Stripe webhook (`src/lib/rate-limit.ts`)
 
 ### 3. Data
 
@@ -64,7 +65,7 @@ src/lib/invoice/
 - Middleware ochrana `/admin/*`
 - Webhook signature verification
 - Input validace (Zod) na klientu i serveru
-- Security headers v `next.config.ts`
+- Security headers v `next.config.ts` (včetně CSP a HSTS v production)
 - Audit log pro admin akce
 
 ## Deployment

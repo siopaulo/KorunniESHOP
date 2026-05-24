@@ -79,8 +79,8 @@ EsterkyGalerie/
 | Cloudinary delivery přes `<img>` + srcset | `components/shared/cloudinary-image.tsx`, `lib/cloudinary-url.ts` | ✅ `src/components/shared/CloudinaryImage.tsx`, `src/lib/cloudinary/url.ts` | **Princip**, ne kopie — u nás URL místo `public_id` |
 | Upload bez transformace při uploadu | `lib/cloudinary.ts` (`signUpload`) | ✅ `src/lib/cloudinary/upload.ts` (server stream) | Reference: signed upload z browseru; my: server-side stream |
 | Admin sidebar + mobilní menu | `studio-chrome.tsx`, `sidebar.tsx` | ⚠️ `AdminShell.tsx` + `AdminMobileNav.tsx` (Sheet) | Reference: inline hamburger; my: Radix Sheet |
-| Confirm delete dialog | `confirm-dialog.tsx` | ❌ Chybí | Krok C |
-| Admin table skeleton | `admin-table-skeleton.tsx` | ❌ Chybí | Krok C |
+| Confirm delete dialog | `confirm-dialog.tsx` | ✅ `ConfirmDialog.tsx` | Krok 6.1 |
+| Admin table skeleton | `admin-table-skeleton.tsx` | ✅ `AdminTableSkeleton.tsx` | Krok 6.2 |
 | Features složka (actions/queries) | `features/photos/actions.ts` | ⚠️ `src/lib/actions/*`, `src/lib/data/*` | Jiná struktura, stejná idea |
 | Server-only guard | `import "server-only"` v lib | ✅ | |
 | Sonner toasty | `photo-uploader.tsx` | ✅ | |
@@ -142,17 +142,17 @@ Import trace: products.ts → ProductPurchasePanel.tsx (client)
 
 ## 6. Refactor plán (beze změny kroků)
 
-### Krok A — hotovo (s výjimkou ověření buildu uživatelem)
+### Krok A — hotovo
 - Cloudinary, ProductCard, detail produktu, sticky footer, admin mobile nav
 
-### Krok B — obsah (⛔ nezačínat)
-- Blog, reference, o nás z DB, cookie banner
+### Krok B — hotovo (fáze 6.4)
+- Blog `/novinky`, reference, o nás z DB, cookie banner
 
-### Krok C — admin UX (⛔ nezačínat)
-- Inspirovat `confirm-dialog.tsx`, `admin-table-skeleton.tsx`, tabulky
+### Krok C — hotovo (fáze 6.1–6.3)
+- Confirm dialogy, admin-table-skeleton, tabulky, AdminPageHeader, loading stavy
 
-### Krok D — fáze 5 (⛔ nezačínat)
-- Lighthouse, testy, deploy
+### Krok D — fáze 5 ✅
+- Vitest, Playwright, CI, legal/DB, deploy docs — viz `docs/AUDIT-FAZE-5.md`
 
 ---
 
@@ -161,9 +161,9 @@ Import trace: products.ts → ProductPurchasePanel.tsx (client)
 - [x] Referenční složka ověřena — `EsterkyGalerie`, ne `esterkyWeb`
 - [x] Konkrétní soubory a patterny z reference zdokumentovány
 - [x] Žádná 1:1 kopie galerijní logiky / brandingu
-- [x] `typecheck` + `lint` čisté
-- [ ] `build` — opraveno v kódu, **uživatel má znovu spustit** `npm run build`
-- [ ] Kroky B/C/D — až po čistém buildu
+- [x] `typecheck` + `lint` + `build` — viz `docs/AUDIT-FAZE-6.md`
+- [x] Kroky B/C — dokončeny ve fázi 6
+- [x] Krok D (fáze 5) — testy, deploy docs, legal wiring
 
 ---
 

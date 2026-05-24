@@ -1,16 +1,27 @@
-import { getAdminSiteSettings } from "@/lib/data/admin";
+import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { SiteSettingsForm } from "@/components/admin/ContentForms";
+import { getAdminSiteSettings } from "@/lib/data/admin";
 
 export default async function AdminSettingsPage() {
   const settings = await getAdminSiteSettings();
   if (!settings) {
-    return <p>Nastavení obchodu nebylo nalezeno. Spusťte seed.sql.</p>;
+    return (
+      <>
+        <AdminPageHeader title="Nastavení obchodu" />
+        <p className="text-sm text-muted-foreground">
+          Nastavení obchodu nebylo nalezeno. Spusťte seed.sql.
+        </p>
+      </>
+    );
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="font-display text-2xl font-semibold">Nastavení obchodu</h1>
+    <>
+      <AdminPageHeader
+        title="Nastavení obchodu"
+        description="Kontakty, doprava, homepage obsah a sociální sítě"
+      />
       <SiteSettingsForm settings={settings} />
-    </div>
+    </>
   );
 }

@@ -1,19 +1,18 @@
 import Link from "next/link";
 
-import { getDashboardMetrics } from "@/lib/data/admin";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getDashboardMetrics } from "@/lib/data/admin";
+import { orderStatusLabel } from "@/lib/order-status-labels";
 import { formatPrice } from "@/lib/utils";
 
 export default async function AdminDashboardPage() {
   const metrics = await getDashboardMetrics();
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="font-display text-2xl font-semibold">Dashboard</h1>
-        <p className="text-sm text-muted-foreground">Přehled obchodu</p>
-      </div>
+    <>
+      <AdminPageHeader title="Dashboard" description="Přehled obchodu" />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
@@ -35,7 +34,7 @@ export default async function AdminDashboardPage() {
         ))}
       </div>
 
-      <Card>
+      <Card className="mt-6">
         <CardHeader>
           <CardTitle>Poslední objednávky</CardTitle>
         </CardHeader>
@@ -45,12 +44,15 @@ export default async function AdminDashboardPage() {
           ) : (
             <ul className="space-y-3">
               {metrics.recentOrders.map((order) => (
-                <li key={order.id} className="flex items-center justify-between text-sm">
-                  <Link href={`/admin/objednavky/${order.id}`} className="font-medium hover:text-sage">
+                <li key={order.id} className="flex items-center justify-between gap-3 text-sm">
+                  <Link
+                    href={`/admin/objednavky/${order.id}`}
+                    className="min-w-0 truncate font-medium hover:text-sage"
+                  >
                     {order.order_number}
                   </Link>
-                  <div className="flex items-center gap-3">
-                    <Badge variant="outline">{order.status}</Badge>
+                  <div className="flex shrink-0 items-center gap-3">
+                    <Badge variant="outline">{orderStatusLabel(order.status)}</Badge>
                     <span>{formatPrice(Number(order.total))}</span>
                   </div>
                 </li>
@@ -59,6 +61,6 @@ export default async function AdminDashboardPage() {
           )}
         </CardContent>
       </Card>
-    </div>
+    </>
   );
 }

@@ -3,6 +3,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import {
+  cartSubtotal,
+  cartTotalItems,
+  clampCartQuantity,
+  resolveCartQuantityUpdate,
+} from "@/lib/cart/calculations";
+
 export interface CartLine {
   productId: string;
   slug: string;
@@ -31,8 +38,9 @@ export const useCart = create<CartState>()(
         set((state) => {
           const existing = state.items.find((i) => i.productId === item.productId);
           if (existing) {
-            const nextQty = Math.min(
-              existing.quantity + quantity,
+            const nextQty = clampCartQuantity(
+              existing.quantity,
+              quantity,
               item.stockQuantity,
             );
             return {
@@ -44,7 +52,7 @@ export const useCart = create<CartState>()(
           return {
             items: [
               ...state.items,
-              { ...item, quantity: Math.min(quantity, item.stockQuantity) },
+              { ...item, quantity: clampCartQuantity(0, quantity, item.stockQuantity) },
             ],
           };
         });
@@ -54,22 +62,23 @@ export const useCart = create<CartState>()(
           items: state.items.filter((i) => i.productId !== productId),
         })),
       updateQuantity: (productId, quantity) => {
-        if (quantity <= 0) {
+        const resolved = resolveCartQuantityUpdate(
+          quantity,
+          get().items.find((i) => i.productId === productId)?.stockQuantity ?? quantity,
+        );
+        if (resolved === null) {
           get().removeItem(productId);
           return;
         }
         set((state) => ({
           items: state.items.map((i) =>
-            i.productId === productId
-              ? { ...i, quantity: Math.min(quantity, i.stockQuantity) }
-              : i,
+            i.productId === productId ? { ...i, quantity: resolved } : i,
           ),
         }));
       },
       clearCart: () => set({ items: [] }),
-      totalItems: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
-      subtotal: () =>
-        get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
+      totalItems: () => cartTotalItems(get().items),
+      subtotal: () => cartSubtotal(get().items),
     }),
     { name: "korunni-cart" },
   ),

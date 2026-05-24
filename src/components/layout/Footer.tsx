@@ -3,9 +3,23 @@ import { Instagram, Leaf, Mail, MapPin, Phone } from "lucide-react";
 
 import { footerLinks, siteConfig } from "@/config/site";
 import { Separator } from "@/components/ui/separator";
+import { getSiteSettings } from "@/lib/data/content";
 
-export function Footer() {
+export async function Footer() {
+  const settings = await getSiteSettings();
   const currentYear = new Date().getFullYear();
+
+  const shopName = settings?.shop_name ?? siteConfig.name;
+  const email = settings?.shop_email ?? siteConfig.contact.email;
+  const phone = settings?.phone || siteConfig.contact.phone;
+  const address = settings?.address || siteConfig.contact.address;
+  const social = (settings?.social_links ?? {}) as Record<string, string>;
+  const instagram = social.instagram ?? siteConfig.social.instagram;
+
+  const operatorLines = [
+    settings?.ico ? `IČO: ${settings.ico}` : null,
+    settings?.dic ? `DIČ: ${settings.dic}` : null,
+  ].filter(Boolean);
 
   return (
     <footer className="border-t border-border/60 bg-moss text-primary-foreground">
@@ -14,11 +28,14 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Leaf className="h-5 w-5 text-sage-light" aria-hidden="true" />
-              <span className="font-display text-lg font-semibold">{siteConfig.name}</span>
+              <span className="font-display text-lg font-semibold">{shopName}</span>
             </div>
             <p className="text-sm leading-relaxed text-primary-foreground/80">
               {siteConfig.tagline}. Ručně vyráběné produkty s láskou k přírodě a tradici.
             </p>
+            {operatorLines.length > 0 ? (
+              <p className="text-xs text-primary-foreground/70">{operatorLines.join(" · ")}</p>
+            ) : null}
           </div>
 
           <div>
@@ -74,35 +91,36 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-primary-foreground/80">
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sage-light" aria-hidden="true" />
-                {siteConfig.contact.address}
+                {address}
               </li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-sage-light" aria-hidden="true" />
-                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-primary-foreground">
-                  {siteConfig.contact.phone}
-                </a>
-              </li>
+              {phone ? (
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 shrink-0 text-sage-light" aria-hidden="true" />
+                  <a href={`tel:${phone}`} className="hover:text-primary-foreground">
+                    {phone}
+                  </a>
+                </li>
+              ) : null}
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0 text-sage-light" aria-hidden="true" />
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="hover:text-primary-foreground"
-                >
-                  {siteConfig.contact.email}
+                <a href={`mailto:${email}`} className="hover:text-primary-foreground">
+                  {email}
                 </a>
               </li>
             </ul>
-            <div className="mt-4 flex gap-3">
-              <a
-                href={siteConfig.social.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="rounded-full bg-primary-foreground/10 p-2 transition-colors hover:bg-primary-foreground/20"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-            </div>
+            {instagram ? (
+              <div className="mt-4 flex gap-3">
+                <a
+                  href={instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="rounded-full bg-primary-foreground/10 p-2 transition-colors hover:bg-primary-foreground/20"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -110,7 +128,7 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-4 text-xs text-primary-foreground/60 sm:flex-row">
           <p>
-            © {currentYear} {siteConfig.name}. Všechna práva vyhrazena.
+            © {currentYear} {shopName}. Všechna práva vyhrazena.
           </p>
           <p className="text-center italic">
             ⚠️ Právní texty jsou šablony — finální znění musí schválit právník.

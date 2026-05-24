@@ -1,8 +1,10 @@
 "use server";
 
+import { headers } from "next/headers";
 import { z } from "zod";
 
 import { sendContactFormEmail } from "@/lib/email/send";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Jméno musí mít alespoň 2 znaky"),
@@ -16,6 +18,17 @@ export async function submitContactAction(
   _prev: ContactActionResult,
   formData: FormData,
 ): Promise<ContactActionResult> {
+  const headersList = await headers();
+  const ip =
+    headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    headersList.get("x-real-ip") ??
+    "unknown";
+
+  const rate = checkRateLimit(`contact:${ip}`, { limit: 5, windowMs: 60_000 });
+  if (!rate.success) {
+    return { error: "Příliš mnoho zpráv. Zkuste to prosím za chvíli." };
+  }
+
   const parsed = contactSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
