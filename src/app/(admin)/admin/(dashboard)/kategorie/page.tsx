@@ -1,3 +1,4 @@
+import { AdminContentContainer } from "@/components/admin/AdminContentContainer";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { CategoryForm } from "@/components/admin/CategoryForm";
 import { DeleteCategoryButton } from "@/components/admin/DeleteCategoryButton";
@@ -13,7 +14,7 @@ export default async function AdminCategoriesPage() {
         description={`${categories.length} kategorií v katalogu`}
       />
 
-      <div className="space-y-8">
+      <AdminContentContainer width="form" className="space-y-8">
         <CategoryForm />
 
         <div className="space-y-4">
@@ -31,7 +32,7 @@ export default async function AdminCategoriesPage() {
             ))
           )}
         </div>
-      </div>
+      </AdminContentContainer>
     </>
   );
 }

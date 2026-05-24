@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Instagram, Leaf, Mail, MapPin, Phone } from "lucide-react";
 
 import { footerLinks, siteConfig } from "@/config/site";
+import { CookieSettingsLink } from "@/components/shared/CookieSettingsLink";
 import { Separator } from "@/components/ui/separator";
 import { getSiteSettings } from "@/lib/data/content";
 
@@ -130,9 +131,7 @@ export async function Footer() {
           <p>
             © {currentYear} {shopName}. Všechna práva vyhrazena.
           </p>
-          <p className="text-center italic">
-            ⚠️ Právní texty jsou šablony — finální znění musí schválit právník.
-          </p>
+          <CookieSettingsLink className="text-center hover:text-primary-foreground" />
         </div>
       </div>
     </footer>

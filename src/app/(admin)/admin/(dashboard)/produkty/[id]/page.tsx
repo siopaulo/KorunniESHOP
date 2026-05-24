@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { AdminContentContainer } from "@/components/admin/AdminContentContainer";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { DeleteProductButton } from "@/components/admin/DeleteProductButton";
 import { ProductForm } from "@/components/admin/ProductForm";
@@ -33,7 +34,7 @@ export default async function EditProductPage({ params }: EditProductPageProps) 
         ]}
         actions={<DeleteProductButton id={product.id} name={product.name} />}
       />
-      <div className="space-y-6">
+      <AdminContentContainer width="form" className="space-y-6">
         <ProductForm product={product} categories={categories} />
         <ProductImagesForm
           productId={product.id}
@@ -41,7 +42,7 @@ export default async function EditProductPage({ params }: EditProductPageProps) 
           images={images}
           cloudinaryConfigured={isCloudinaryConfigured()}
         />
-      </div>
+      </AdminContentContainer>
     </>
   );
 }

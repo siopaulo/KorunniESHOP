@@ -109,6 +109,6 @@ Nové routes v buildu: `/novinky`, `/novinky/[slug]`, `/reference`, `/o-nas` (dy
 
 ## Známé limity (mimo fázi 6)
 
-- Právní stránky veřejně stále statické šablony (admin editace v DB existuje)
 - Homepage hero zatím z `siteConfig`, ne plně z `homepage_content`
-- Filtry katalogu produktů, rate limit checkout — fáze 3/5
+- Filtry katalogu produktů — volitelné vylepšení
+- Lighthouse skóre — spustit ručně po deployi (viz fáze 5)

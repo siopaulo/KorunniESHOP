@@ -22,6 +22,8 @@ export type BlogStatus = "draft" | "published";
 
 export type InvoiceStatus = "draft" | "issued" | "sent" | "paid" | "cancelled";
 
+export type ContactMessageStatus = "new" | "in_progress" | "resolved" | "archived";
+
 type Table<
   Row,
   Insert = Partial<Row>,
@@ -349,6 +351,7 @@ export interface Database {
         content: string;
         rating: number;
         is_active: boolean;
+        is_verified: boolean;
         sort_order: number;
         created_at: string;
         updated_at: string;
@@ -358,9 +361,50 @@ export interface Database {
         content: string;
         rating: number;
         is_active?: boolean;
+        is_verified?: boolean;
         sort_order?: number;
         created_at?: string;
         updated_at?: string;
+      }>;
+      contact_messages: Table<{
+        id: string;
+        name: string;
+        email: string;
+        phone: string | null;
+        subject: string | null;
+        message: string;
+        gdpr_consent: boolean;
+        status: ContactMessageStatus;
+        internal_note: string | null;
+        order_number: string | null;
+        source: string;
+        created_at: string;
+        updated_at: string;
+      }>;
+      contact_message_replies: Table<{
+        id: string;
+        contact_message_id: string | null;
+        to_email: string;
+        subject: string;
+        body: string;
+        sent_at: string | null;
+        provider: string;
+        provider_error: string | null;
+        created_by: string | null;
+        created_at: string;
+      }>;
+      mail_log: Table<{
+        id: string;
+        contact_message_id: string | null;
+        to_email: string;
+        subject: string;
+        body: string;
+        template_key: string | null;
+        status: string;
+        provider: string;
+        provider_error: string | null;
+        created_by: string | null;
+        created_at: string;
       }>;
     };
     Views: Record<string, never>;
@@ -375,6 +419,7 @@ export interface Database {
       admin_role: AdminRole;
       blog_status: BlogStatus;
       invoice_status: InvoiceStatus;
+      contact_message_status: ContactMessageStatus;
     };
     CompositeTypes: Record<string, never>;
   };

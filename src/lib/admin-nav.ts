@@ -7,6 +7,7 @@ import {
   Star,
   Settings,
   Users,
+  Mail,
   type LucideIcon,
 } from "lucide-react";
 
@@ -23,6 +24,7 @@ export const adminNavItems: {
   { href: "/admin/produkty", label: "Produkty", icon: Package, roles: "catalog" },
   { href: "/admin/kategorie", label: "Kategorie", icon: FolderTree, roles: "catalog" },
   { href: "/admin/objednavky", label: "Objednávky", icon: ShoppingCart, roles: "orders" },
+  { href: "/admin/zpravy", label: "Zprávy", icon: Mail, roles: "orders" },
   { href: "/admin/novinky", label: "Novinky", icon: FileText, roles: "catalog" },
   { href: "/admin/reference", label: "Reference", icon: Star, roles: "catalog" },
   { href: "/admin/pravni-texty", label: "Právní texty", icon: FileText, roles: "settings" },

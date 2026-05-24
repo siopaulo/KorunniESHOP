@@ -42,6 +42,7 @@ export const footerLinks = {
     { href: "/ochrana-osobnich-udaju", label: "Ochrana osobních údajů" },
     { href: "/cookies", label: "Cookies" },
     { href: "/reklamacni-rad", label: "Reklamační řád" },
+    { href: "/odstoupeni-od-smlouvy", label: "Odstoupení od smlouvy" },
   ],
 } as const;
 

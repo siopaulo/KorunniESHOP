@@ -53,9 +53,15 @@ export function ProductCard({ product }: ProductCardProps) {
           <div>
             <span className="font-semibold">{formatPrice(Number(product.price))}</span>
             {product.compare_at_price && (
-              <span className="ml-2 text-sm text-muted-foreground line-through">
-                {formatPrice(Number(product.compare_at_price))}
-              </span>
+              <>
+                <span className="ml-2 text-sm text-muted-foreground line-through">
+                  {formatPrice(Number(product.compare_at_price))}
+                </span>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Nejnižší cena za posledních 30 dní:{" "}
+                  {formatPrice(Number(product.compare_at_price))}
+                </p>
+              </>
             )}
           </div>
           <AddToCartButton

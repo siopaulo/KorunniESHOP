@@ -77,6 +77,7 @@ const LEGAL_SLUG_MAP: Record<string, string> = {
   privacy: "ochrana-osobnich-udaju",
   cookies: "cookies",
   returns: "reklamacni-rad",
+  withdrawal: "odstoupeni-od-smlouvy",
 };
 
 export function routeToLegalSlug(pathname: string): string | null {
@@ -88,6 +89,7 @@ export function routeToLegalSlug(pathname: string): string | null {
   if (pathname.includes("ochrana-osobnich")) return "privacy";
   if (pathname.includes("cookies")) return "cookies";
   if (pathname.includes("reklamacni")) return "returns";
+  if (pathname.includes("odstoupeni")) return "withdrawal";
   return null;
 }
 

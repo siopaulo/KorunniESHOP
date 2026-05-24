@@ -21,12 +21,13 @@ INSERT INTO public.site_settings (
   '{"heroTitle": "Bylinná péče s duší přírody", "storyTitle": "Tradice, která voní bylinkami"}'::jsonb
 ) ON CONFLICT (id) DO NOTHING;
 
--- Legal pages (templates)
+-- Legal pages (plný obsah se načítá z aplikace; prázdný obsah = fallback v LegalPageView)
 INSERT INTO public.legal_pages (slug, title, content) VALUES
-  ('terms', 'Obchodní podmínky', '⚠️ Šablona — finální znění musí schválit právník.'),
-  ('privacy', 'Ochrana osobních údajů', '⚠️ Šablona GDPR — finální znění musí schválit právník.'),
-  ('cookies', 'Zásady cookies', '⚠️ Šablona — finální znění musí schválit právník.'),
-  ('returns', 'Reklamační řád', '⚠️ Šablona — finální znění musí schválit právník.')
+  ('terms', 'Obchodní podmínky', ''),
+  ('privacy', 'Ochrana osobních údajů', ''),
+  ('cookies', 'Zásady cookies', ''),
+  ('returns', 'Reklamační řád', ''),
+  ('withdrawal', 'Odstoupení od smlouvy', '')
 ON CONFLICT (slug) DO NOTHING;
 
 -- Categories

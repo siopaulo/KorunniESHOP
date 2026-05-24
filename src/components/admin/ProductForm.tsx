@@ -28,7 +28,7 @@ export function ProductForm({ product, categories }: ProductFormProps) {
   if (state.error) toast.error(state.error);
 
   return (
-    <form action={action} className="max-w-2xl space-y-6">
+    <form action={action} className="mx-auto max-w-3xl space-y-6">
       {product?.id && <input type="hidden" name="id" value={product.id} />}
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -37,8 +37,9 @@ export function ProductForm({ product, categories }: ProductFormProps) {
           <Input id="name" name="name" defaultValue={product?.name} required />
         </div>
         <div className="space-y-2">
-          <Label htmlFor="slug">Slug</Label>
-          <Input id="slug" name="slug" defaultValue={product?.slug} />
+          <Label htmlFor="slug">Adresa v URL</Label>
+          <Input id="slug" name="slug" defaultValue={product?.slug} placeholder="mydlo-s-levanduli" />
+          <p className="text-xs text-muted-foreground">Krátký text v adrese produktu</p>
         </div>
         <div className="space-y-2">
           <Label htmlFor="categoryId">Kategorie</Label>

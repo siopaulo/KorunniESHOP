@@ -54,9 +54,15 @@ export function ProductPurchasePanel({ product }: ProductPurchasePanelProps) {
           {formatPrice(Number(product.price))}
         </span>
         {product.compare_at_price && (
-          <span className="text-base text-muted-foreground line-through sm:text-lg">
-            {formatPrice(Number(product.compare_at_price))}
-          </span>
+          <>
+            <span className="text-base text-muted-foreground line-through sm:text-lg">
+              {formatPrice(Number(product.compare_at_price))}
+            </span>
+            <p className="w-full text-xs text-muted-foreground">
+              Nejnižší cena za posledních 30 dní:{" "}
+              {formatPrice(Number(product.compare_at_price))}
+            </p>
+          </>
         )}
       </div>
 

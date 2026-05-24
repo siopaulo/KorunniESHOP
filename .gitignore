@@ -48,3 +48,10 @@ next-env.d.ts
 
 # Reference project - local only
 EsterkyGalerie/
+
+.env
+.env.local
+.env.*.local
+.env.production
+node_modules
+.next

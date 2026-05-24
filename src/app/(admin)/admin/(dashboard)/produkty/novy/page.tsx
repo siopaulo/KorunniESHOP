@@ -1,3 +1,4 @@
+import { AdminContentContainer } from "@/components/admin/AdminContentContainer";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { ProductForm } from "@/components/admin/ProductForm";
 import { getAdminCategories } from "@/lib/data/admin";
@@ -15,7 +16,9 @@ export default async function NewProductPage() {
           { label: "Nový produkt" },
         ]}
       />
-      <ProductForm categories={categories} />
+      <AdminContentContainer width="form">
+        <ProductForm categories={categories} />
+      </AdminContentContainer>
     </>
   );
 }

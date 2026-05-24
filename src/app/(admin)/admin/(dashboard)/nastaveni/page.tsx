@@ -1,3 +1,4 @@
+import { AdminContentContainer } from "@/components/admin/AdminContentContainer";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
 import { SiteSettingsForm } from "@/components/admin/ContentForms";
 import { getAdminSiteSettings } from "@/lib/data/admin";
@@ -21,7 +22,9 @@ export default async function AdminSettingsPage() {
         title="Nastavení obchodu"
         description="Kontakty, doprava, homepage obsah a sociální sítě"
       />
-      <SiteSettingsForm settings={settings} />
+      <AdminContentContainer width="narrow">
+        <SiteSettingsForm settings={settings} />
+      </AdminContentContainer>
     </>
   );
 }

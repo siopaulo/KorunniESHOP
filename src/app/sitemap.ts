@@ -16,6 +16,7 @@ const staticRoutes = [
   "/ochrana-osobnich-udaju",
   "/cookies",
   "/reklamacni-rad",
+  "/odstoupeni-od-smlouvy",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

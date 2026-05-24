@@ -318,6 +318,7 @@ export async function upsertTestimonialAction(
     content: formData.get("content"),
     rating: parseFormNumber(formData.get("rating"), 5),
     isActive: parseFormBool(formData.get("isActive")),
+    isVerified: parseFormBool(formData.get("isVerified")),
     sortOrder: parseFormNumber(formData.get("sortOrder")),
   });
 
@@ -329,6 +330,7 @@ export async function upsertTestimonialAction(
     content: parsed.data.content,
     rating: parsed.data.rating,
     is_active: parsed.data.isActive,
+    is_verified: parsed.data.isVerified,
     sort_order: parsed.data.sortOrder,
   };
 

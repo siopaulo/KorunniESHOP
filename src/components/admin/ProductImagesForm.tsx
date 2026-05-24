@@ -46,7 +46,7 @@ export function ProductImagesForm({
   }, [state]);
 
   return (
-    <div className="max-w-2xl space-y-6 rounded-2xl border border-border bg-card p-6">
+    <div className="mx-auto max-w-3xl space-y-6 rounded-2xl border border-border bg-card p-6">
       <div>
         <h2 className="font-display text-lg font-semibold">Fotografie produktu</h2>
         <p className="mt-1 text-sm text-muted-foreground">

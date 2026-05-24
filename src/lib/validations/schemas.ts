@@ -90,6 +90,7 @@ export const testimonialSchema = z.object({
   content: z.string().min(1).max(2000),
   rating: z.number().int().min(1).max(5),
   isActive: z.boolean().default(true),
+  isVerified: z.boolean().default(false),
   sortOrder: z.number().int().min(0).default(0),
 });
 

@@ -1,5 +1,6 @@
+import { AdminContentContainer } from "@/components/admin/AdminContentContainer";
 import { AdminPageHeader } from "@/components/admin/AdminPageHeader";
-import { TestimonialForm } from "@/components/admin/ContentForms";
+import { TestimonialsTable } from "@/components/admin/TestimonialsTable";
 import { getAdminTestimonials } from "@/lib/data/admin";
 
 export default async function AdminTestimonialsPage() {
@@ -9,15 +10,12 @@ export default async function AdminTestimonialsPage() {
     <>
       <AdminPageHeader
         title="Reference"
-        description={`${items.length} referencí zákazníků`}
+        description={`${items.length} referencí zákazníků — správa zobrazení na webu`}
       />
 
-      <div className="space-y-8">
-        <TestimonialForm />
-        {items.map((item) => (
-          <TestimonialForm key={item.id} item={item as Parameters<typeof TestimonialForm>[0]["item"]} />
-        ))}
-      </div>
+      <AdminContentContainer width="wide">
+        <TestimonialsTable rows={items as Parameters<typeof TestimonialsTable>[0]["rows"]} />
+      </AdminContentContainer>
     </>
   );
 }

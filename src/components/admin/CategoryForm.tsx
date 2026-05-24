@@ -19,15 +19,16 @@ export function CategoryForm({ category }: { category?: CategoryRow }) {
   if (state.error) toast.error(state.error);
 
   return (
-    <form action={action} className="max-w-xl space-y-4 rounded-2xl border border-border bg-card p-6">
+    <form action={action} className="mx-auto max-w-3xl space-y-4 rounded-2xl border border-border bg-card p-6">
       {category?.id && <input type="hidden" name="id" value={category.id} />}
       <div className="space-y-2">
         <Label htmlFor="name">Název</Label>
         <Input id="name" name="name" defaultValue={category?.name} required />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="slug">Slug</Label>
-        <Input id="slug" name="slug" defaultValue={category?.slug} />
+        <Label htmlFor="slug">Adresa v URL</Label>
+        <Input id="slug" name="slug" defaultValue={category?.slug} placeholder="bylinna-mydla" />
+        <p className="text-xs text-muted-foreground">Krátký text v adrese stránky kategorie</p>
       </div>
       <div className="space-y-2">
         <Label htmlFor="description">Popis</Label>

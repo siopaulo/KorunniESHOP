@@ -103,11 +103,11 @@ npm run test:ci       # typecheck + lint + unit + build
 
 | Příkaz | Výsledek |
 |--------|----------|
-| `npm run typecheck` | viz poslední běh agenta |
-| `npm run lint` | viz poslední běh |
-| `npm run test` | viz poslední běh |
-| `npm run build` | viz poslední běh |
-| `npm run test:e2e` | viz poslední běh |
+| `npm run typecheck` | ✅ exit 0 |
+| `npm run lint` | ✅ bez chyb |
+| `npm run test` | ✅ 22/22 testů |
+| `npm run build` | ✅ Next.js 15.5.18 |
+| `npm run test:e2e` | ✅ 6/6 Playwright smoke |
 
 ---
 
