@@ -1,0 +1,88 @@
+
+> korunni-byliny@0.1.0 typecheck
+> tsc --noEmit
+
+src/app/(admin)/admin/(dashboard)/kategorie/page.tsx(21,30): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/kategorie/page.tsx(24,62): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/novinky/page.tsx(12,33): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(18,26): error TS2339: Property 'customers' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(28,79): error TS2339: Property 'order_number' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(30,37): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(47,59): error TS2339: Property 'payment_status' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(48,50): error TS2339: Property 'invoice_status' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(50,79): error TS2339: Property 'provider_payment_id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(54,40): error TS2339: Property 'invoice_number' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(54,70): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(64,27): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(66,23): error TS2339: Property 'product_name' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(66,45): error TS2339: Property 'quantity' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(68,46): error TS2339: Property 'total_price' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(73,45): error TS2339: Property 'total' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(78,24): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(79,30): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/[id]/page.tsx(80,26): error TS2339: Property 'admin_note' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(38,38): error TS2339: Property 'customers' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(44,32): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(45,58): error TS2339: Property 'order_number' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(52,66): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(52,83): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(54,65): error TS2339: Property 'total' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(56,37): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/objednavky/page.tsx(59,60): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/page.tsx(48,32): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/page.tsx(49,58): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/page.tsx(50,28): error TS2339: Property 'order_number' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/page.tsx(53,53): error TS2339: Property 'status' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/page.tsx(54,53): error TS2339: Property 'total' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/pravni-texty/page.tsx(14,34): error TS2339: Property 'slug' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/[id]/page.tsx(23,42): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(40,32): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(41,58): error TS2339: Property 'name' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(43,29): error TS2339: Property 'product_categories' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(45,65): error TS2339: Property 'price' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(46,46): error TS2339: Property 'stock_quantity' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(48,43): error TS2339: Property 'is_active' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(49,30): error TS2339: Property 'is_active' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/produkty/page.tsx(54,60): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/reference/page.tsx(12,36): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/uzivatele/page.tsx(24,29): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/uzivatele/page.tsx(25,43): error TS2339: Property 'email' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/uzivatele/page.tsx(26,43): error TS2339: Property 'full_name' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/uzivatele/page.tsx(27,43): error TS2339: Property 'role' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/uzivatele/page.tsx(33,60): error TS2339: Property 'id' does not exist on type 'never'.
+src/app/(admin)/admin/(dashboard)/uzivatele/page.tsx(37,60): error TS2339: Property 'role' does not exist on type 'never'.
+src/lib/actions/admin.ts(99,46): error TS2345: Argument of type '{ category_id: string; name: string; slug: string; description: string; short_description: string; price: number; compare_at_price: number | null | undefined; stock_quantity: number; low_stock_threshold: number; ... 6 more ...; weight_grams: number | ... 1 more ... | undefined; }' is not assignable to parameter of type 'never'.
+src/lib/actions/admin.ts(100,46): error TS2345: Argument of type '{ category_id: string; name: string; slug: string; description: string; short_description: string; price: number; compare_at_price: number | null | undefined; stock_quantity: number; low_stock_threshold: number; ... 6 more ...; weight_grams: number | ... 1 more ... | undefined; }' is not assignable to parameter of type 'never[]'.
+  Type '{ category_id: string; name: string; slug: string; description: string; short_description: string; price: number; compare_at_price: number | null | undefined; stock_quantity: number; low_stock_threshold: number; ... 6 more ...; weight_grams: number | ... 1 more ... | undefined; }' is missing the following properties from type 'never[]': length, pop, push, concat, and 35 more.
+src/lib/actions/admin.ts(108,21): error TS2339: Property 'id' does not exist on type 'never'.
+src/lib/actions/admin.ts(171,56): error TS2345: Argument of type '{ name: string; slug: string; description: string; image_url: string | null | undefined; seo_title: string | null | undefined; seo_description: string | null | undefined; sort_order: number; is_active: boolean; }' is not assignable to parameter of type 'never'.
+src/lib/actions/admin.ts(172,56): error TS2345: Argument of type '{ name: string; slug: string; description: string; image_url: string | null | undefined; seo_title: string | null | undefined; seo_description: string | null | undefined; sort_order: number; is_active: boolean; }' is not assignable to parameter of type 'never[]'.
+  Type '{ name: string; slug: string; description: string; image_url: string | null | undefined; seo_title: string | null | undefined; seo_description: string | null | undefined; sort_order: number; is_active: boolean; }' is missing the following properties from type 'never[]': length, pop, push, concat, and 35 more.
+src/lib/actions/admin.ts(222,13): error TS2345: Argument of type '{ status: "new" | "awaiting_payment" | "paid" | "processing" | "shipped" | "completed" | "cancelled" | "returned"; admin_note: string | null; }' is not assignable to parameter of type 'never'.
+src/lib/actions/admin.ts(286,48): error TS2345: Argument of type '{ title: string; slug: string; excerpt: string; content: string; cover_image_url: string | null | undefined; status: "draft" | "published"; seo_title: string | null | undefined; seo_description: string | ... 1 more ... | undefined; published_at: string | null; author_id: string; }' is not assignable to parameter of type 'never'.
+src/lib/actions/admin.ts(287,48): error TS2345: Argument of type '{ title: string; slug: string; excerpt: string; content: string; cover_image_url: string | null | undefined; status: "draft" | "published"; seo_title: string | null | undefined; seo_description: string | ... 1 more ... | undefined; published_at: string | null; author_id: string; }' is not assignable to parameter of type 'never[]'.
+  Type '{ title: string; slug: string; excerpt: string; content: string; cover_image_url: string | null | undefined; status: "draft" | "published"; seo_title: string | null | undefined; seo_description: string | ... 1 more ... | undefined; published_at: string | null; author_id: string; }' is missing the following properties from type 'never[]': length, pop, push, concat, and 35 more.
+src/lib/actions/admin.ts(336,50): error TS2345: Argument of type '{ author_name: string; content: string; rating: number; is_active: boolean; sort_order: number; }' is not assignable to parameter of type 'never'.
+src/lib/actions/admin.ts(337,50): error TS2345: Argument of type '{ author_name: string; content: string; rating: number; is_active: boolean; sort_order: number; }' is not assignable to parameter of type 'never[]'.
+  Type '{ author_name: string; content: string; rating: number; is_active: boolean; sort_order: number; }' is missing the following properties from type 'never[]': length, pop, push, concat, and 35 more.
+src/lib/actions/admin.ts(384,13): error TS2345: Argument of type '{ shop_name: string; shop_email: string; phone: string; address: string; ico: string | null | undefined; dic: string | null | undefined; bank_account: string | null | undefined; shipping_config: { ...; }; }' is not assignable to parameter of type 'never'.
+src/lib/actions/admin.ts(421,13): error TS2345: Argument of type '{ title: string; content: string; }' is not assignable to parameter of type 'never'.
+src/lib/actions/admin.ts(446,13): error TS2345: Argument of type '{ role: AdminRole; }' is not assignable to parameter of type 'never'.
+src/lib/actions/checkout.ts(128,26): error TS2352: Conversion of type 'string | number | boolean | { [key: string]: Json | undefined; } | Json[]' to type 'ShippingConfig' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'Json[]' is missing the following properties from type 'ShippingConfig': flatRate, freeShippingThreshold
+src/lib/audit/log.ts(19,7): error TS2353: Object literal may only specify known properties, and 'user_id' does not exist in type 'never[]'.
+src/lib/auth/actions.ts(53,17): error TS2339: Property 'is_active' does not exist on type 'never'.
+src/lib/auth/session.ts(46,17): error TS2339: Property 'is_active' does not exist on type 'never'.
+src/lib/auth/session.ts(52,20): error TS2339: Property 'email' does not exist on type 'never'.
+src/lib/auth/session.ts(53,23): error TS2339: Property 'full_name' does not exist on type 'never'.
+src/lib/auth/session.ts(54,19): error TS2339: Property 'role' does not exist on type 'never'.
+src/lib/data/admin.ts(121,36): error TS2339: Property 'stock_quantity' does not exist on type 'never'.
+src/lib/data/admin.ts(121,56): error TS2339: Property 'low_stock_threshold' does not exist on type 'never'.
+src/lib/data/admin.ts(126,31): error TS2339: Property 'created_at' does not exist on type 'never'.
+src/lib/data/admin.ts(127,40): error TS2339: Property 'total' does not exist on type 'never'.
+src/lib/data/content.ts(108,36): error TS2339: Property 'stock_quantity' does not exist on type 'never'.
+src/lib/data/content.ts(108,56): error TS2339: Property 'low_stock_threshold' does not exist on type 'never'.
+src/lib/data/products.ts(130,31): error TS2339: Property 'stock_quantity' does not exist on type 'never'.
+src/lib/data/products.ts(130,51): error TS2339: Property 'low_stock_threshold' does not exist on type 'never'.
+src/middleware.ts(40,19): error TS2339: Property 'is_active' does not exist on type 'never'.
+src/middleware.ts(46,26): error TS2339: Property 'role' does not exist on type 'never'.

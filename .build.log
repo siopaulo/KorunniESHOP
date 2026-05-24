@@ -1,0 +1,28 @@
+
+> korunni-byliny@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.18
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./src/lib/data/products.ts
+Error:   [31mx[0m You're importing a component that needs "server-only". That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/app/building-your-application/rendering/server-components
+  [31m|[0m
+
+   ,-[[36;1;4m/home/pavli/MamkyWEB/src/lib/data/products.ts[0m:1:1]
+ [2m1[0m | import "server-only";
+   : [35;1m^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m2[0m | 
+ [2m3[0m | import { createClient } from "@/lib/supabase/server";
+ [2m3[0m | import { isSupabaseConfigured } from "@/lib/supabase/config";
+   `----
+
+Import trace for requested module:
+./src/lib/data/products.ts
+./src/components/shop/ProductPurchasePanel.tsx
+
+
+> Build failed because of webpack errors

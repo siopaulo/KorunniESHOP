@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand palette — Korunní Byliny */
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-moss: var(--moss);
+  --color-cream: var(--cream);
+  --color-earth: var(--earth);
+  --color-earth-light: var(--earth-light);
+  --color-gold: var(--gold);
+  --color-charcoal: var(--charcoal);
+
+  --font-display: var(--font-cormorant);
+  --font-body: var(--font-source-sans);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand colors */
+  --sage: #6b8f71;
+  --sage-light: #a8c5ab;
+  --moss: #3d5a45;
+  --cream: #faf7f2;
+  --earth: #8b7355;
+  --earth-light: #c4b5a0;
+  --gold: #c4a962;
+  --charcoal: #2c2c2c;
+
+  /* shadcn semantic tokens mapped to brand */
+  --background: #faf7f2;
+  --foreground: #2c2c2c;
+  --card: #ffffff;
+  --card-foreground: #2c2c2c;
+  --popover: #ffffff;
+  --popover-foreground: #2c2c2c;
+  --primary: #3d5a45;
+  --primary-foreground: #faf7f2;
+  --secondary: #a8c5ab;
+  --secondary-foreground: #2c2c2c;
+  --muted: #f0ebe3;
+  --muted-foreground: #6b6560;
+  --accent: #c4a962;
+  --accent-foreground: #2c2c2c;
+  --destructive: #b44a4a;
+  --border: #e5ddd3;
+  --input: #e5ddd3;
+  --ring: #6b8f71;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-semibold tracking-tight text-charcoal;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-padding {
+    @apply px-4 py-16 md:px-6 md:py-24 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto max-w-6xl;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .botanical-pattern {
+    background-image: radial-gradient(
+      circle at 20% 50%,
+      color-mix(in srgb, var(--sage-light) 15%, transparent) 0%,
+      transparent 50%
+    );
+  }
+}
