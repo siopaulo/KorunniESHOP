@@ -4,10 +4,10 @@ import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 
 import {
-  deleteProductImageAction,
   setPrimaryProductImageAction,
   uploadProductImageAction,
 } from "@/lib/actions/product-images";
+import { DeleteProductImageButton } from "@/components/admin/DeleteProductImageButton";
 import type { ActionResult } from "@/lib/actions/admin";
 import { CloudinaryImage } from "@/components/shared/CloudinaryImage";
 import { Button } from "@/components/ui/button";
@@ -118,13 +118,7 @@ export function ProductImagesForm({
                     </Button>
                   </form>
                 )}
-                <form action={deleteProductImageAction}>
-                  <input type="hidden" name="imageId" value={image.id} />
-                  <input type="hidden" name="productId" value={productId} />
-                  <Button type="submit" size="sm" variant="destructive">
-                    Smazat
-                  </Button>
-                </form>
+                <DeleteProductImageButton imageId={image.id} productId={productId} />
               </div>
             </li>
           ))}

@@ -1,8 +1,6 @@
 import { getAdminCategories } from "@/lib/data/admin";
 import { CategoryForm } from "@/components/admin/CategoryForm";
-import { deleteCategoryFormAction } from "@/lib/actions/admin";
-import { Button } from "@/components/ui/button";
-
+import { DeleteCategoryButton } from "@/components/admin/DeleteCategoryButton";
 export default async function AdminCategoriesPage() {
   const categories = await getAdminCategories();
 
@@ -20,13 +18,9 @@ export default async function AdminCategoriesPage() {
         {categories.map((category) => (
           <div key={category.id} className="rounded-2xl border border-border bg-card p-4">
             <CategoryForm category={category} />
-            <form action={deleteCategoryFormAction} className="mt-2">
-              <input type="hidden" name="id" value={category.id} />
-              <Button type="submit" variant="destructive" size="sm">
-                Smazat
-              </Button>
-            </form>
-          </div>
+            <div className="mt-2">
+              <DeleteCategoryButton id={category.id} name={category.name} />
+            </div>          </div>
         ))}
       </div>
     </div>

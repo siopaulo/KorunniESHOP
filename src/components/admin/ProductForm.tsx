@@ -5,7 +5,6 @@ import { toast } from "sonner";
 
 import {
   upsertProductAction,
-  deleteProductFormAction,
   type ActionResult,
 } from "@/lib/actions/admin";
 import { Button } from "@/components/ui/button";
@@ -101,17 +100,6 @@ export function ProductForm({ product, categories }: ProductFormProps) {
 
       <Button type="submit" disabled={pending}>
         {pending ? "Ukládám…" : product ? "Uložit změny" : "Vytvořit produkt"}
-      </Button>
-    </form>
-  );
-}
-
-export function DeleteProductButton({ id }: { id: string }) {
-  return (
-    <form action={deleteProductFormAction}>
-      <input type="hidden" name="id" value={id} />
-      <Button type="submit" variant="destructive" size="sm">
-        Smazat produkt
       </Button>
     </form>
   );
